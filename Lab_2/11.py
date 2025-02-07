@@ -1,2 +1,1 @@
-thislist = ["apple", "banana", "cherry", "apple", "cherry"]
-print(thislist)
+print(5 + 4 - 7 + 3)

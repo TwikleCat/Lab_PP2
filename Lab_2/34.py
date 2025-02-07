@@ -1,3 +1,3 @@
-newlist = [x for x in range(10) if x < 5]
-
-print(newlist)
+thislist = ["apple", "banana", "cherry"]
+for x in thislist:
+  print(x)

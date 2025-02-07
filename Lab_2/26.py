@@ -1,3 +1,3 @@
 thislist = ["apple", "banana", "cherry"]
-thislist.clear()
+thislist.append("orange")
 print(thislist)

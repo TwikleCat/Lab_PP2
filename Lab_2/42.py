@@ -1,3 +1,5 @@
-thislist = ["banana", "Orange", "Kiwi", "cherry"]
-thislist.sort(key = str.lower)
-print(thislist)
+fruits = ["apple", "banana", "cherry", "kiwi", "mango"]
+
+newlist = [x.upper() for x in fruits]
+
+print(newlist)

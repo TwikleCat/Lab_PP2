@@ -1,3 +1,3 @@
-thislist = ["apple", "banana", "cherry"]
-mylist = list(thislist)
-print(mylist)
+thislist = ["orange", "mango", "kiwi", "pineapple", "banana"]
+thislist.sort()
+print(thislist)

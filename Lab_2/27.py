@@ -1,3 +1,4 @@
 thislist = ["apple", "banana", "cherry"]
-for x in thislist:
-  print(x)
+tropical = ["mango", "pineapple", "papaya"]
+thislist.extend(tropical)
+print(thislist)

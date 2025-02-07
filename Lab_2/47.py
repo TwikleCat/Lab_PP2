@@ -1,5 +1,3 @@
-list1 = ["a", "b", "c"]
-list2 = [1, 2, 3]
-
-list3 = list1 + list2
-print(list3)
+thislist = ["orange", "mango", "kiwi", "pineapple", "banana"]
+thislist.sort(reverse = True)
+print(thislist)

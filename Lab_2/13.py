@@ -1,2 +1,2 @@
-list1 = ["abc", 34, True, 40, "male"]
-print(type(list1))
+thislist = ["apple", "banana", "cherry"]
+print(len(thislist))

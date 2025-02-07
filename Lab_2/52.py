@@ -1,3 +1,3 @@
 thislist = ["apple", "banana", "cherry"]
-del thislist[0]
-print(thislist)
+mylist = thislist.copy()
+print(mylist)

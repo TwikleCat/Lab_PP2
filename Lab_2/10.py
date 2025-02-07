@@ -1,2 +1,1 @@
-thislist = ["apple", "banana", "cherry"]
-print(thislist)
+print(100 + 5 * 3)

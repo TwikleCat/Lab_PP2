@@ -1,2 +1,2 @@
-thislist = ["apple", "banana", "cherry", "orange", "kiwi", "melon", "mango"]
-print(thislist[2:5])
+mylist = ["apple", "banana", "cherry"]
+print(type(mylist))

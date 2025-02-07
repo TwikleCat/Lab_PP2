@@ -1,3 +1,3 @@
-thislist = ["apple", "banana", "cherry", "banana", "kiwi"]
-thislist.remove("banana")
+thislist = ["apple", "banana", "cherry"]
+thislist[1:2] = ["blackcurrant", "watermelon"]
 print(thislist)

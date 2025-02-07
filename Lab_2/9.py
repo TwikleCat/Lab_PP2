@@ -1,1 +1,3 @@
-print(100 + 5 * 3)
+x = ["apple", "banana"]
+
+print("banana" in x)

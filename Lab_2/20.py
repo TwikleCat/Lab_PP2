@@ -1,3 +1,2 @@
-thislist = ["apple", "banana", "cherry"]
-thislist.insert(2, "watermelon")
-print(thislist)
+thislist = ["apple", "banana", "cherry", "orange", "kiwi", "melon", "mango"]
+print(thislist[-4:-1])

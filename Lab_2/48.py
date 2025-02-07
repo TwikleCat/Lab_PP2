@@ -1,7 +1,6 @@
-list1 = ["a", "b" , "c"]
-list2 = [1, 2, 3]
+def myfunc(n):
+  return abs(n - 50)
 
-for x in list2:
-  list1.append(x)
-
-print(list1)
+thislist = [100, 50, 65, 82, 23]
+thislist.sort(key = myfunc)
+print(thislist)

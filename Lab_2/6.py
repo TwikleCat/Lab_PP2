@@ -1,7 +1,6 @@
-def myFunction() :
-  return True
+class myclass():
+  def __len__(self):
+    return 0
 
-if myFunction():
-  print("YES!")
-else:
-  print("NO!")
+myobj = myclass()
+print(bool(myobj))

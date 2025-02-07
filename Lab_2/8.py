@@ -1,1 +1,2 @@
-print((6 + 3) - (6 + 3))
+x = 200
+print(isinstance(x, int))
