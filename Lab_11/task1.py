@@ -11,17 +11,10 @@ conn = psycopg2.connect(
 cur = conn.cursor()
 
 def search_contacts(pattern):
-     
-    results = []
-    try:
-        cur.callproc('search_phonebook', (pattern,))
-        row = cur.fetchone()
-        while row is not None:
-            results.append(row)
-            row = cur.fetchone()
-    except (Exception, psycopg2.DatabaseError) as error:
-        print(f"Database error: {error}")
-    return results
+    cur.callproc('search_phonebook', [pattern])
+    for row in cur.fetchall():
+        print(row)
+
 
 
 
@@ -33,23 +26,41 @@ def insert_or_update_user():
     print("User inserted/updated successfully.")
 
 
-def insert_many_users():
-    usernames = input("Enter usernames (comma-separated): ").split(",")
-    phones = input("Enter phones (comma-separated, same order): ").split(",")
-    if len(usernames) != len(phones):
-        print("Mismatch in number of usernames and phones.")
-        return
-    cur.execute("CALL insert_many_users(%s, %s)", (usernames, phones))
+def insert_users():
+    n = int(input("How many users do you want to insert? "))
+    usernames = []
+    phones = []
+
+    for i in range(n):
+        username = input(f"Enter username #{i+1}: ")
+        phone = input(f"Enter phone for {username}: ")
+        usernames.append(username)
+        phones.append(phone)
+
+    cur.execute(
+        "select*from insert_users(%s::VARCHAR[], %s::VARCHAR[])",
+        (usernames, phones)
+    )
+    invalids = cur.fetchall()
+
+    if invalids:
+        print("\nInvalid entries:")
+        for user in invalids:
+            print(f"Username: {user[0]}, Phone: {user[1]}")
+    else:
+        print("All users inserted successfully.")
+
     conn.commit()
-    print("Bulk insert completed. Check server for invalid data notice.")
+
+
 
 
 def get_users_paginated():
     limit = int(input("Enter limit: "))
     offset = int(input("Enter offset: "))
-    cur.execute("SELECT * FROM get_users_paginated(%s, %s)", (limit, offset))
-    rows = cur.fetchall()
-    for row in rows:
+
+    cur.callproc('paginate_phonebook', (limit, offset))
+    for row in cur.fetchall():
         print(row)
 
 
@@ -65,7 +76,7 @@ def main():
         print("\n--- PhoneBook Menu ---")
         print("1. Search by pattern")
         print("2. Insert or update single user")
-        print("3. Bulk insert many users")
+        print("3. Insert many users")
         print("4. Paginated user list")
         print("5. Delete user by username or phone")
         print("6. Exit")
@@ -73,11 +84,11 @@ def main():
         choice = input("Choose an option: ")
         if choice == "1":
             pattern = input("Enter search pattern: ")
-            results = search_contacts(pattern)
+            print(search_contacts(pattern))
         elif choice == "2":
             insert_or_update_user()
         elif choice == "3":
-            insert_many_users()
+            insert_users()
         elif choice == "4":
             get_users_paginated()
         elif choice == "5":
