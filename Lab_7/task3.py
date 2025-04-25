@@ -2,7 +2,7 @@ import pygame
 
 pygame.init()
 
-w, h = 510, 510
+w, h = 500, 500
 screen = pygame.display.set_mode((w, h))
 
 r = 25
